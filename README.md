@@ -6,11 +6,15 @@ Página web de muestra para una barbería moderna, diseñada para presentar sus 
 
 **[Visitar Barbería Estilo](https://AlanVasilatos.github.io/barberia-estilo/)**
 
+
 ## 📸 Vista previa
+
+![Página web de Barbería Estilo](hero-barberia.png)
 
 ![Inicio de Barbería Estilo](barberia-inicio.png)
 
 ![Galería de Barbería Estilo](barberia-galeria.png)
+
 
 ## ✨ Funcionalidades
 
