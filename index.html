@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Barbería</title>
+</head>
+<body>
+
+    <header>
+    <h1>Barbería Estilo</h1>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <button id="tema-btn" class="tema-btn" aria-label="Cambiar tema">
+        ☀️
+    </button>
+</header>
+
+    <main>
+
+        <section id="inicio">
+
+    <div class="hero-contenido">
+        <h2>Tu estilo, tu corte.</h2>
+
+        <p>Barbería moderna para un estilo único.</p>
+
+        <a href="#contacto" class="boton">Reservar turno</a>
+    </div>
+
+</section>
+
+        <section id="servicios">
+    <h2>Servicios</h2>
+
+    <div class="servicios-contenedor">
+
+        <div class="servicio">
+            <h3>Corte de cabello</h3>
+            <p>Corte clásico o moderno según tu estilo.</p>
+            <span>$10.000</span>
+        </div>
+
+        <div class="servicio">
+            <h3>Barba</h3>
+            <p>Perfilado y arreglo de barba.</p>
+            <span>$7.000</span>
+        </div>
+
+        <div class="servicio">
+            <h3>Corte + barba</h3>
+            <p>El servicio completo para renovar tu estilo.</p>
+            <span>$15.000</span>
+        </div>
+
+    </div>
+</section>
+<section id="galeria">
+    <h2>Galería</h2>
+
+    <div class="galeria-contenedor">
+
+        <div class="imagen-galeria">
+    <img src="galeria-1.jpg" alt="Corte de cabello moderno">
+</div>
+        <div class="imagen-galeria">
+    <img src="galeria-2.jpg" alt="Trabajo de barba">
+</div>
+
+<div class="imagen-galeria">
+    <img src="galeria-3.jpg" alt="Corte de cabello y barba">
+</div>
+
+<div class="imagen-galeria">
+    <img src="galeria-4.jpg" alt="Detalle de herramientas de barbería">
+</div>
+
+<div class="imagen-galeria">
+    <img src="galeria-5.jpg" alt="Corte degradado con diseño">
+</div>
+
+<div class="imagen-galeria">
+    <img src="galeria-6.jpg" alt="Corte clásico con tijera">
+</div>
+    </section>
+
+<section id="contacto">
+
+    <div class="contacto-contenedor">
+
+        <div class="informacion-contacto">
+            <h3>Barbería Estilo</h3>
+
+            <p>📍 Dirección: Av. Principal 123</p>
+            <p>📞 Teléfono: 11 1234-5678</p>
+            <p>🕒 Lunes a sábado: 9:00 - 20:00</p>
+        </div>
+
+        <form class="formulario-contacto" id="formulario-contacto" novalidate>
+
+    <h2>Contacto</h2>
+
+    <input type="text" id="nombre" placeholder="Nombre" required>
+<p class="mensaje-error" id="error-nombre"></p>
+
+<input type="email" id="email" placeholder="Email" required>
+<p class="mensaje-error" id="error-email"></p>
+
+<input type="tel" id="telefono" placeholder="Teléfono" required>
+<p class="mensaje-error" id="error-telefono"></p>
+
+<textarea id="mensaje" placeholder="Mensaje" required></textarea>
+<p class="mensaje-error" id="error-mensaje"></p>
+
+    <button type="submit">Enviar mensaje</button>
+
+    <p id="mensaje-enviado">¡Mensaje enviado correctamente!</p>
+
+</form>
+
+    </div>
+
+</section>
+
+    </main>
+
+    <footer>
+
+    <div class="footer-contenido">
+
+        <div>
+            <h3>Barbería Estilo</h3>
+            <p>Tu estilo, tu corte.</p>
+        </div>
+
+        <div>
+            <p>Seguinos en nuestras redes</p>
+            <p>Instagram · Facebook</p>
+        </div>
+
+    </div>
+
+    <p class="copyright">© 2026 Barbería Estilo. Todos los derechos reservados.</p>
+
+</footer>
+<script>
+    const botonTema = document.getElementById("tema-btn");
+
+    botonTema.addEventListener("click", () => {
+        document.body.classList.toggle("tema-claro");
+
+        if (document.body.classList.contains("tema-claro")) {
+            botonTema.textContent = "🌙";
+        } else {
+            botonTema.textContent = "☀️";
+        }
+    });
+</script>
+<script>
+    const formulario = document.getElementById("formulario-contacto");
+    const mensajeEnviado = document.getElementById("mensaje-enviado");
+
+    formulario.addEventListener("submit", (evento) => {
+        evento.preventDefault();
+
+        const nombre = document.getElementById("nombre");
+        const email = document.getElementById("email");
+        const telefono = document.getElementById("telefono");
+        const mensaje = document.getElementById("mensaje");
+
+        const errorNombre = document.getElementById("error-nombre");
+        const errorEmail = document.getElementById("error-email");
+        const errorTelefono = document.getElementById("error-telefono");
+        const errorMensaje = document.getElementById("error-mensaje");
+
+        const nombreValido = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,40}$/;
+        const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const telefonoValido = /^[0-9\s()+-]{8,20}$/;
+
+        let formularioValido = true;
+
+        document.querySelectorAll(".mensaje-error").forEach((error) => {
+            error.classList.remove("mostrar");
+        });
+
+        if (!nombre.value.trim()) {
+            errorNombre.textContent = "Completá tu nombre.";
+            errorNombre.classList.add("mostrar");
+            formularioValido = false;
+        } else if (!nombreValido.test(nombre.value.trim())) {
+            errorNombre.textContent = "Ingresá un nombre válido.";
+            errorNombre.classList.add("mostrar");
+            formularioValido = false;
+        }
+
+        if (!email.value.trim()) {
+            errorEmail.textContent = "Completá tu email.";
+            errorEmail.classList.add("mostrar");
+            formularioValido = false;
+        } else if (!emailValido.test(email.value.trim())) {
+            errorEmail.textContent = "Ingresá un email válido.";
+            errorEmail.classList.add("mostrar");
+            formularioValido = false;
+        }
+
+        if (!telefono.value.trim()) {
+            errorTelefono.textContent = "Completá tu teléfono.";
+            errorTelefono.classList.add("mostrar");
+            formularioValido = false;
+        } else if (!telefonoValido.test(telefono.value.trim())) {
+            errorTelefono.textContent = "Ingresá un teléfono válido.";
+            errorTelefono.classList.add("mostrar");
+            formularioValido = false;
+        }
+
+        if (!mensaje.value.trim()) {
+            errorMensaje.textContent = "Escribí un mensaje.";
+            errorMensaje.classList.add("mostrar");
+            formularioValido = false;
+        } else if (mensaje.value.trim().length < 10) {
+            errorMensaje.textContent = "El mensaje debe tener al menos 10 caracteres.";
+            errorMensaje.classList.add("mostrar");
+            formularioValido = false;
+        }
+
+        setTimeout(() => {
+            document.querySelectorAll(".mensaje-error").forEach((error) => {
+                error.classList.remove("mostrar");
+            });
+        }, 3000);
+
+        if (!formularioValido) {
+            return;
+        }
+
+        mensajeEnviado.classList.add("mostrar");
+
+        formulario.reset();
+
+        setTimeout(() => {
+            mensajeEnviado.classList.remove("mostrar");
+        }, 3000);
+    });
+</script>
+</body>
+</html>
